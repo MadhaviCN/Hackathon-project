@@ -1,0 +1,47 @@
+
+<div class="col-md-12 margin-top">
+    <section>
+      
+      <div class="content ">
+        <div class="primary-button card-deck mb-3 text-center">
+            <div class="panel-heading publish-dock">
+                <h3 class="panel-title">
+                    Invitation From Teams
+                </h3>
+            </div>
+          <!-- grid start -->
+          <table class="table table-striped" [mfData]="dataObj" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy"
+            [(mfSortOrder)]="sortOrder">
+            <thead>
+              <tr>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="ideaTitle">Team Name</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="email">Team idea</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="skillset">Technology</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                  <mfDefaultSorter by="action">Action</mfDefaultSorter>
+                </th>
+              </tr>
+  
+            </thead>
+            <tbody>
+              <tr *ngFor="let team of teamDetails?.invitationFromTeam"> <!-- So far created skeleton, need to bind correct data once API call completed-->
+                <td>{{team.idea.teamName}}</td>
+                <td>{{team.idea.title}}</td>
+                <td>{{team.idea.technologyTags[0]}}</td>
+                <td>
+                  <button class ="btn btn-light" (click)="joinTeam(team)" [disabled]="team.isPending === 'approved' ? 'true': null">{{team.isPending === 'approved' ? 'JOINED': 'JOIN TEAM'}}</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Grid End -->
+        </div>
+      </div>
+    </section>
+  </div>
